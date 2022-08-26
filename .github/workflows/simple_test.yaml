@@ -28,4 +28,4 @@ jobs:
       
       - name: Test with unittest
         run: |
-          python -m unittest ./simple_test.py
+          python -m unittest simple_test

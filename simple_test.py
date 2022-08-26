@@ -9,13 +9,13 @@ import unittest
 URL_TEMP_FILE = "https://filesamples.com/samples/document/txt/sample2.txt"
 
 
-class DownloadFile(unittest.TestCase):
+class TestDownloadFile(unittest.TestCase):
     """
     Test case install chrome,   
         download file and check extract files!  
     """
 
-    def testDownload(self) -> None:
+    def test_Download(self) -> None:
         """Test download file if ok return True  """
         self.assertTrue(_downloadFile(URL_TEMP_FILE, "./temp/a.txt"))
 
