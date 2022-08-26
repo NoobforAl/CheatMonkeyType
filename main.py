@@ -75,11 +75,11 @@ def _acceptCookies(browser: WebDriver) -> None:
     ac1, ac2 = 0, 0
 
     while True:
-        """ if not _acceptCookie1(browser) and 2 > ac1:
+        if not _acceptCookie1(browser) and 2 > ac1:
             print("retry for accept cookie")
             ac1 += 1
             continue
- """
+
         if not _acceptCookie2(browser) and 2 > ac2:
             print("retry for accept cookie")
             ac2 += 1
