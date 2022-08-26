@@ -26,4 +26,5 @@ trio-websocket==0.9.2
 typing-extensions==4.3.0
 urllib3==1.26.10
 webdriver-manager==3.8.2
+wget==3.2
 wsproto==1.1.0
