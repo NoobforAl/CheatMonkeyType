@@ -6,7 +6,7 @@ import lzma
 import os
 
 OsLIST = {
-    "windows": "https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/1039242/chrome-win.zip",
+    "windows": "https://github.com/RobRich999/Chromium_Clang/releases/download/v108.0.5357.0-r1058455-win64-avx2/chrome.zip",
     "darwin": "https://storage.googleapis.com/chromium-browser-snapshots/Mac/1039233/chrome-mac.zip",
     "ubuntu": "https://github.com/macchrome/linchrome/releases/download/v104.0.5112.101-r1012729-portable-ungoogled-Lin64/ungoogled-chromium_104.0.5112.101_1.vaapi_linux.tar.xz",
     "unknown": "https://github.com/macchrome/linchrome/releases/download/v104.0.5112.101-r1012729-portable-ungoogled-Lin64/ungoogled-chromium_104.0.5112.101_1.vaapi_linux.tar.xz",
@@ -53,7 +53,7 @@ def _removeFile(name: str) -> None:
 def FindChromeFolder() -> str:
     for dirpath, _, filenames in os.walk("./"):
         for filename in filenames:
-            if filename == "chrome.exe":
+            if filename in ["chrome.exe", "chrome"]:
                 return os.path.join(dirpath, filename)
     return ""
 

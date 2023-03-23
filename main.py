@@ -26,16 +26,19 @@ from time import sleep
 
 import os
 
+# first check can find browser ?
+PATH_CHROME = FindChromeFolder()
 
 # set option for chrome
 # accept all
 options: Options = webdriver.ChromeOptions()
-options.add_argument('--ignore-certificate-errors')
-options.add_argument('--ignore-ssl-errors')
 options.add_argument('--ignore-certificate-errors-spki-list')
+options.add_argument('--ignore-certificate-errors')
+options.add_argument('--disable-dev-shm-usage')
+options.add_argument('--ignore-ssl-errors')
+options.add_argument('--no-sandbox')
 
-# first check can find browser ?
-PATH_CHROME = FindChromeFolder()
+options.binary_location = PATH_CHROME
 
 
 def _chromeIsExists():
@@ -44,12 +47,11 @@ def _chromeIsExists():
     if not os.path.exists(PATH_CHROME):
         print("can't find Chromium Download file started!")
         PATH_CHROME = DownloadFileChromium()
-        assert PATH_CHROME == "", "not found chrome!"
+        assert PATH_CHROME != "", "not found chrome!"
 
 
 def _loadPage(browser: WebDriver) -> None:
     browser.get('https://monkeytype.com')
-    sleep(5)
     print("web Loaded !")
 
 
@@ -127,12 +129,16 @@ def run() -> None:
 
     except Exception as err:
         print(err)
-
-    finally:
-        print("see result!\n after 20s exit!")
-        sleep(20)
-        print("Finish !")
         browser.close()
+
+    except KeyboardInterrupt:
+        browser.close()
+        exit()
+
+    print("see result!\n after 20s exit!")
+    sleep(20)
+    print("Finish !")
+    browser.close()
 
 
 if __name__ == "__main__":
